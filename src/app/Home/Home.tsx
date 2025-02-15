@@ -1,5 +1,7 @@
 import Navbar from "@/components/header/Navbar";
 import banner from "../../assets/images/banner-1.jpg";
+import { Separator } from "../../components/ui/separator";
+
 import loader from "../../assets/images/loader.gif";
 import {
   Card,
@@ -11,6 +13,8 @@ import {
 // import { Product } from "@/sampledata";
 import { useEffect, useState } from "react";
 import { getallProductFromDb } from "@/firebase/product";
+import { Star } from "lucide-react";
+import { ProductList } from "@/components/product/produtlist";
 
 export const HomePage = () => {
   const [products, setproducts] = useState([]);
@@ -41,6 +45,7 @@ export const HomePage = () => {
     "
     >
       <Navbar />
+      <Separator />
 
       <section>
         <header className="mt-5 ">
@@ -49,24 +54,7 @@ export const HomePage = () => {
       </section>
 
       <section className="mt-7">
-        <h3 className="text-lg ">New Arrival</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7">
-          {products.map((item) => (
-            <Card key={item?.name} className="cursor-pointer">
-              <CardHeader className="h-60    overflow-hidden">
-                <img src={item?.images[0]} />
-              </CardHeader>
-              <CardContent className="mt-3">
-                <CardTitle>{item?.name}</CardTitle>
-                <div>
-                  <CardDescription>{item?.rating}</CardDescription>
-                  <CardDescription>{item?.price}</CardDescription>
-                </div>
-                <CardDescription>{item?.description}</CardDescription>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <ProductList product={products} />
       </section>
     </div>
   );

@@ -1,4 +1,12 @@
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
 import { app } from "./auth";
 // import { Product } from "@/sampledata";
 
@@ -29,4 +37,18 @@ export const getallProductFromDb = async () => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const getSingleProduct = async (slug: string) => {
+  const colref = collection(db, "product");
+  const q = query(colref, where("slug", "==", slug));
+
+  const productsnapshot = await getDocs(q);
+  let product;
+
+  productsnapshot.forEach((doc) => {
+    product = doc.data();
+  });
+
+  return product;
 };

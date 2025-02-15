@@ -4,12 +4,11 @@
 
 // Your web app's Firebase configuration
 export const firebaseConfig = {
-  apiKey: "AIzaSyAiv7OQUzHapUrdoHdoGCM1zXBHVWJ-3jg",
+  apiKey: import.meta.env.VITE_API_API_KEY,
   authDomain: "smithshoes-14775.firebaseapp.com",
   projectId: "smithshoes-14775",
-  storageBucket: "smithshoes-14775.firebasestorage.app",
   messagingSenderId: "899924455277",
-  appId: "1:899924455277:web:adf969b597ba435c4a3464"
+  appId: import.meta.env.VITE_API_APP_ID,
 };
 
 // Initialize Firebase

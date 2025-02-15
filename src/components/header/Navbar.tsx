@@ -29,7 +29,7 @@ function Navbar() {
           <div className="profile">
             <HoverCard>
               <HoverCardTrigger className="border rounded-full px-3 cursor-pointer py-2 ">
-                M
+                {user.user.email.split("")[0].toUpperCase()}
               </HoverCardTrigger>
               <HoverCardContent className=" flex justify-center flex-col gap-3">
                 <p className="text-sm font-light">
